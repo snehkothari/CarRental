@@ -3,6 +3,7 @@ const Car = require('../models/car');
 const mongoose = require('mongoose');
 
 let date_ob = new Date();
+//current day
 let date = ("0" + date_ob.getDate()).slice(-2);
 
 // current month
@@ -10,6 +11,8 @@ let date = ("0" + date_ob.getDate()).slice(-2);
 
 // current year
 	let year = date_ob.getFullYear();
+
+//Adding a new car to the database.
 exports.add_car=(req, res, next)=>{
 	const car = new Car({
 		_id: new mongoose.Types.ObjectId(),
@@ -34,7 +37,7 @@ exports.add_car=(req, res, next)=>{
 	});
 }
 
-
+//Getting all the cars present in the database
 exports.get_all_cars = (req, res, next)=>{
 	Car.find()
 	.select('_id vehicle_no rent model seat_capacity bookings')
@@ -69,7 +72,11 @@ exports.get_all_cars = (req, res, next)=>{
 		});
 	});
 }
+//Updating car details if no bookings for the car exist now or in the future
+//The values are sent to this function in the form of an array of JSON values.
+//Look at JSON file uploaded for sample of input
 exports.update_car=(req, res, next) =>{
+	//current date
 	var date_today = ((year*10000)+(month*100)+date%100)
 	const id = req.params.carId;
 	Car.findById(id).exec().then(car=>{
@@ -88,6 +95,7 @@ exports.update_car=(req, res, next) =>{
 			error: err
 		});
 	});
+	//values entered as "propName":"key",""value":"your value"
 	const updateOps = {};
 	for(const ops of req.body){
 		updateOps[ops.propName] = ops.value;
@@ -105,6 +113,7 @@ exports.update_car=(req, res, next) =>{
 		});
 	});
 }
+//Deleting car details if no bookings for the car exist now or in the future
 exports.delete_car=(req, res, next) =>{
 	var date_today = ((year*10000)+(month*100)+date%100)
 	const id = req.params.carId;
@@ -139,6 +148,8 @@ exports.delete_car=(req, res, next) =>{
 	});
 
 }
+//Filter for displaying car based on criteria like rent, seat_capacity,etc.
+//JSON file contains example of all filters
 exports.filter_car=(req,res,next)=>{
 	const filter = String(req.params.filter);
 	const value = Number(req.params.value);
