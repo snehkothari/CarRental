@@ -2,7 +2,7 @@ const Book = require('../models/book');
 const Car = require('../models/car');
 const mongoose = require('mongoose');
 
-
+//Get details of all the bookings made from the database.
 exports.books_get_all = (req, res, next)=> {
 	Book.find()
 	.select('car from to _id')
@@ -27,6 +27,8 @@ exports.books_get_all = (req, res, next)=> {
 		});
 	});
 }
+//Make a new booking if the booking doesn't clash with existing booking.
+//If no clash/conflict then add the booking and also add the dates in the booking array of the car
 exports.add_bookings=(req, res, next)=> {
 	Car.findById(req.body.carId)
 	.then(car =>{
@@ -99,6 +101,7 @@ exports.add_bookings=(req, res, next)=> {
 		});
 	});
 }
+//Get details of a single booking from its id
 exports.get_single_booking = (req,res,next)=>{
 	Book.findById(req.params.bookId)
 	.populate('car')
@@ -119,6 +122,7 @@ exports.get_single_booking = (req,res,next)=>{
 		});
 	});
 }
+//Delete booking by using the booking_id
 exports.delete_booking = (req,res,next)=>{
 	Book.remove({_id: req.params.bookId}).exec()
 	.then(result=>{
