@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "93b576f7-4ca2-48cf-a715-c8d8065a730e",
+		"name": "Car Rental",
+		"description": "WhitePanda test on Car Rental.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filtering Cars",
+			"item": [
+				{
+					"name": "By Rent",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars/rent&3300",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars",
+								"rent&3300"
+							]
+						},
+						"description": "Filtering cars by specifying the rent. Hence cars having rent lower than or equal to the entered value will be displayed.Change the number after & in the link to try for different values."
+					},
+					"response": []
+				},
+				{
+					"name": "By Model",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars/model&Skoda Laura",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars",
+								"model&Skoda Laura"
+							]
+						},
+						"description": "Filtering cars by specifying the model. Hence cars having same model will be displayed.Change the String after & in the link to try for different values."
+					},
+					"response": []
+				},
+				{
+					"name": "By Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars/date&20200502",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars",
+								"date&20200502"
+							]
+						},
+						"description": "Filtering cars by specifying the availibilty on that day. Hence cars not having booking on that day will be displayed.Change the number after & in the link to try for different values."
+					},
+					"response": []
+				},
+				{
+					"name": "By Seating Capacity",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars/seat_capacity&4",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars",
+								"seat_capacity&4"
+							]
+						},
+						"description": "Filtering cars by specifying seating capacity. Hence cars having capacity greater than or equal to the entered value will be displayed.Change the number after & in the link to try for different values."
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains the option to filter cars based on their rent,model,availability,id and seating capacity. All these are GET requests sending the filter and value.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Extras",
+			"item": [
+				{
+					"name": "Get Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars/",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars",
+								""
+							]
+						},
+						"description": "Get details of all the cars present in the database."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/books/",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"books",
+								""
+							]
+						},
+						"description": "Get all the bookings that have been made."
+					},
+					"response": []
+				}
+			],
+			"description": "These requests were created to check the functioning during the development.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Add Car",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vehicle_no\":\"MH01BE7642\",\n\t\"rent\":2200,\n\t\"model\":\"Skoda Laura\",\n\t\"seat_capacity\":5\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://carrentalwhitepanda.herokuapp.com/cars",
+					"protocol": "https",
+					"host": [
+						"carrentalwhitepanda",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"cars"
+					]
+				},
+				"description": "Addind a new car into the model Cars"
+			},
+			"response": [
+				{
+					"name": "Add Car",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"vehicle_no\":\"MH01BE2642\",\n\t\"rent\":3200,\n\t\"model\":\"Mercedes Benz\",\n\t\"seat_capacity\":5,\n\t\"_id\":\"5eac0ad618352b30f39f740b\"\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://carrentalwhitepanda.herokuapp.com/cars",
+							"protocol": "https",
+							"host": [
+								"carrentalwhitepanda",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "188"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"bc-6FwvuUU1wv3f3OSb8g3/cAde0dw\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 May 2020 14:39:47 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Handling POST requests\",\n    \"AddedCar\": {\n        \"bookings\": [\n            null\n        ],\n        \"_id\": \"5ead86326a121700045e4fbd\",\n        \"vehicle_no\": \"MH01BE2642\",\n        \"rent\": 3200,\n        \"model\": \"Mercedes Benz\",\n        \"seat_capacity\": 5,\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Book Car ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"carId\":\"5ead975a708519000451a323\",\n\t\"from\":\"20200502\",\n\t\"to\":\"20200505\"\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://carrentalwhitepanda.herokuapp.com/books/",
+					"protocol": "https",
+					"host": [
+						"carrentalwhitepanda",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"books",
+						""
+					]
+				},
+				"description": "Booking cars based on their availability for the chosen time period. Enter from, to and id for booking.The input format for date for \"from\" and \"to\" is YYYYMMDD."
+			},
+			"response": []
+		},
+		{
+			"name": "Car Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://carrentalwhitepanda.herokuapp.com/cars/id&5ead975a708519000451a323",
+					"protocol": "https",
+					"host": [
+						"carrentalwhitepanda",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"cars",
+						"id&5ead975a708519000451a323"
+					]
+				},
+				"description": "Checks car details including bookings using the car model. The car Id is sent with the GET request."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Car Details",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\"propName\":\"seat_capacity\",\"value\":\"4\"}\n\t]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://carrentalwhitepanda.herokuapp.com/cars/5ead975a708519000451a323",
+					"protocol": "https",
+					"host": [
+						"carrentalwhitepanda",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"cars",
+						"5ead975a708519000451a323"
+					]
+				},
+				"description": "Updates car details after checking if there are any active bookings. If not then the car details are updated.\nUse other car ids( like 5eac84743386d934fb5ab61f) to update values.\nUse GET request for Car Details to view changes\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Car",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://carrentalwhitepanda.herokuapp.com/cars/5ead869c6a121700045e4fbe",
+					"protocol": "https",
+					"host": [
+						"carrentalwhitepanda",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"cars",
+						"5ead869c6a121700045e4fbe"
+					]
+				},
+				"description": "Checks if bookings are present now or in the future. If not the deletion of car is allowed.\nUse GET request for Car Details to view if deleted.\n"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
